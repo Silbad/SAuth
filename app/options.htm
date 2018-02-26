@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <title>SAuth</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="stylesheet" href="./options-min.css"/>
+        <script src="./../js/jquery.min.js"></script>
+        <script src="./../js/popper.min.js"></script>
+        <script src="./../js/bootstrap.min.js"></script>
+        <script src="./options.js"></script>
+    </head>
+
+    <body>
+
+        <h2 id="security"></h2>
+
+        <form id="form-options-pin-create" class="form-inline p-2">
+
+            <div class="form-group mr-2">
+                <label id="label-pin" class="mr-2" for="sauth-pin"></label> <input id="sauth-pin" type="password" class="form-control" maxlength="4" />
+            </div>
+
+            <button type="submit" class="btn btn-primary pull-right save"></button>
+
+        </form>
+
+        <form id="form-options-pin-update" class="form-inline p-2">
+
+            <div class="form-group mr-2">
+                <label id="label-pin-old" class="mr-2" for="sauth-pin-old"></label> <input id="sauth-pin-old" type="password" class="form-control" maxlength="4" />
+            </div>
+
+            <div class="form-group mr-2">
+                <label id="label-pin-new" class="mr-2" for="sauth-pin-new"></label> <input id="sauth-pin-new" type="password" class="form-control" maxlength="4" />
+            </div>
+
+            <button type="submit" class="btn btn-primary pull-right save"></button>
+
+        </form>
+
+        <div id="main-forms">
+
+            <br />
+
+            <h2 id="secrets"></h2>
+
+            <form id="form-options-secrets" class="form-inline p-2">
+
+                <div class="form-group mr-2">
+                    <label id="label-secret-account" class="mr-2" for="sauth-secret-account"></label><input id="sauth-secret-account" type="text" class="form-control" value="" />
+                </div>
+
+                <div class="form-group mr-2">
+                    <label id="label-secret-code" class="mr-2" for="sauth-secret-code"></label><input id="sauth-secret-code" type="text" class="form-control" value="" />
+                </div>
+
+                <button id="add" type="submit" class="btn btn-primary"></button>
+
+            </form>
+
+            <table id="list-secrets" class="table table-striped table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th class="label-secret-account"></th>
+                        <th class="label-secret-code"></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <br />
+
+            <h2 id="data"></h2>
+
+            <form id="form-options-data" class="p-2">
+                <button id="reset" type="submit" class="btn btn-danger pull-right"></button>
+            </form>
+
+        </div>
+
+    </body>
+
+</html>

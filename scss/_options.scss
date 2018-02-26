@@ -1,0 +1,15 @@
+body {
+    font-size: 16px;
+    background: transparent;
+}
+
+.table {
+    margin-top: 15px;
+    tr td:last-child {
+        width: 1px;
+    }
+}
+
+#form-options-secrets input {
+    width: 300px;
+}

@@ -1,0 +1,82 @@
+{
+    "SAuthName": {
+        "message": "SAuth",
+        "description": "Nom de l'extension"
+    },
+    "SAuthDescription": {
+        "message": "Tous les codes secrets pour l'authentification à deux facteurs",
+        "description": "Description de l'extension"
+    },
+    "SAuthLabelSecurity": {
+        "message": "Sécurité",
+        "description": "Libellé sécurité"
+    },
+    "SAuthLabelPIN": {
+        "message": "Code PIN",
+        "description": "Libellé code PIN"
+    },
+    "SAuthButtonSave": {
+        "message": "Enregistrer",
+        "description": "Libellé bouton enregistrer"
+    },
+    "SAuthLabelListSecrets": {
+        "message": "Liste des secrets",
+        "description": "Libellé liste des secrets"
+    },
+    "SAuthLabelPINOld": {
+        "message": "Ancien PIN",
+        "description": "Libellé ancien PIN"
+    },
+    "SAuthLabelPINNew": {
+        "message": "Nouveau PIN",
+        "description": "Libellé nouveau PIN"
+    },
+    "SAuthLabelSecretAccount": {
+        "message": "Compte",
+        "description": "Libellé du texte du compte"
+    },
+    "SAuthLabelSecretCode": {
+        "message": "Secret",
+        "description": "Libellé du secret"
+    },
+    "SAuthLabelData": {
+        "message": "Données",
+        "description": "Libellé données"
+    },
+    "SAuthClipboard": {
+        "message": "code copié dans le bloc-notes",
+        "description": "Texte bloc-notes"
+    },
+    "SAuthButtonAdd": {
+        "message": "Ajouter",
+        "description": "Libellé bouton ajouter"
+    },
+    "SAuthButtonDelete": {
+        "message": "Supprimer",
+        "description": "Libellé bouton supprimer"
+    },
+    "SAuthButtonReset": {
+        "message": "Ré-initialiser DEFINITIVEMENT vos données",
+        "description": "Libellé bouton ré-initialiser"
+    },
+    "SAuthConfirmDelete": {
+        "message": "Etes-vous sûr de vouloir supprimer ce secret ?",
+        "description": "Texte de la confirmation suppression du secret"
+    },
+    "SAuthAlertForm": {
+        "message": "Erreur : certains champs ne sont pas valident !",
+        "description": "Texte de l'erreur renvoyé si formulaire non valide"
+    },
+    "SAuthConfigurationText": {
+        "message": "SAuth est presque prêt.<br />Un code PIN et au moins un secret doivent être configurés dans les options.",
+        "description": "Texte si options non configurées"
+    },
+    "SAuthAlertFormPinSuccess": {
+        "message": "Mise à jour du code PIN réussie.",
+        "description": "Texte confirmation mise à jour code PIN"
+    },
+    "SAuthConfirmReset": {
+        "message": "Etes-vous sûr de vouloir ré-initialiser DEFINITIVEMENT toutes vos données ?",
+        "description": "Texte de la confirmation de ré-initialisation des données"
+    }
+}

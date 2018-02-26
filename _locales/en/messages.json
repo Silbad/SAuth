@@ -1,0 +1,82 @@
+{
+    "SAuthName": {
+        "message": "SAuth",
+        "description": "Nom de l'extension"
+    },
+    "SAuthDescription": {
+        "message": "All token secrets for two-factor authentication",
+        "description": "Description de l'extension"
+    },
+    "SAuthLabelSecurity": {
+        "message": "Security",
+        "description": "Label Security"
+    },
+    "SAuthLabelPIN": {
+        "message": "Code PIN",
+        "description": "Label code PIN"
+    },
+    "SAuthButtonSave": {
+        "message": "Save",
+        "description": "Label save button"
+    },
+    "SAuthLabelListSecrets": {
+        "message": "Secrets list",
+        "description": "Label secrets list"
+    },
+    "SAuthLabelPINOld": {
+        "message": "Old PIN",
+        "description": "Label old PIN"
+    },
+    "SAuthLabelPINNew": {
+        "message": "New PIN",
+        "description": "Label new PIN"
+    },
+    "SAuthLabelSecretAccount": {
+        "message": "Account",
+        "description": "Label secret account"
+    },
+    "SAuthLabelSecretCode": {
+        "message": "Code",
+        "description": "Label secret code"
+    },
+    "SAuthLabelData": {
+        "message": "Data",
+        "description": "Label data"
+    },
+    "SAuthClipboard": {
+        "message": "code copied to clipboard",
+        "description": "Text clipboard"
+    },
+    "SAuthButtonAdd": {
+        "message": "Add",
+        "description": "Label save button"
+    },
+    "SAuthButtonDelete": {
+        "message": "Delete",
+        "description": "Label delete button"
+    },
+    "SAuthButtonReset": {
+        "message": "Reset your data DEFINITIVELY",
+        "description": "Label reset button"
+    },
+    "SAuthConfirmDelete": {
+        "message": "Are you sure you want to suppress this secret?",
+        "description": "Text of the confirmation for delete the secret"
+    },
+    "SAuthAlertForm": {
+        "message": "Error: some fields are not valid!",
+        "description": "Text of the error returned if form invalid"
+    },
+    "SAuthConfigurationText": {
+        "message": "SAuth's almost ready.<br />A PIN code and at least one secret must be configured in the options.",
+        "description": "Text if unconfigured options"
+    },
+    "SAuthAlertFormPinSuccess": {
+        "message": "Successful PIN code update.",
+        "description": "Confirmation text updated PIN code update"
+    },
+    "SAuthConfirmReset": {
+        "message": "Are you sure you want to reset DEFINITIVELY all your data?",
+        "description": "Data reset confirmation confirmation text"
+    }
+}
