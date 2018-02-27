@@ -11,4 +11,5 @@ Extension to get all your token secrets for two-factor authentication, protected
 
 ## Help me with donations
 My Gulden account
+
 ![SAuth](./donation/gulden_silbad.png)
