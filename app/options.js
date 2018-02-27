@@ -4,7 +4,7 @@ $(function() {
     browser.storage.local.get('listSecrets').then(function(item) {
         var SAuthButtonDelete = browser.i18n.getMessage('SAuthButtonDelete');
         $.each(item.listSecrets, function( key, value ) {
-            var tmpRow = '<tr><td>' + parseInt(key + 1) + '</td><td>' + value.account + '</td><td>************</td><td class="text-danger text-right"><button class="btn btn-danger delete"></button></td></tr>';
+            var tmpRow = '<tr><td>' + parseInt(key + 1) + '</td><td>' + value.account + '</td><td data-code="' + value.code + '">************</td><td class="text-danger text-right"><button class="btn btn-danger delete"></button></td></tr>';
             $('#list-secrets tbody').append(tmpRow);
         });
         $('.delete').html(SAuthButtonDelete).on('click', function(){
@@ -72,10 +72,12 @@ $(function() {
                 var tmpPinOld = $('#sauth-pin-old').val();
                 var tmpPinNew = $('#sauth-pin-new').val();
                 if ((tmpPinNew.length === 4) && (item.pin == tmpPinOld)) {
-                    browser.storage.local.set({ pin: tmpPinNew });
-                    $('#sauth-pin-old').val('');
-                    $('#sauth-pin-new').val('');
-                    alert(browser.i18n.getMessage('SAuthAlertFormPinSuccess'));
+                    browser.storage.local.remove(['pin', 'sessionDate']).then(function(itemDel) {
+                        browser.storage.local.set({ pin: tmpPinNew });
+                        $('#sauth-pin-old').val('');
+                        $('#sauth-pin-new').val('');
+                        alert(browser.i18n.getMessage('SAuthAlertFormPinSuccess'));
+                    });
                 } else {
                     alert(browser.i18n.getMessage('SAuthAlertForm'));
                 }
@@ -104,7 +106,7 @@ $(function() {
                 // update table
                 $('#list-secrets  tbody').html('');
                 $.each(listSecrets, function( key, value ) {
-                    var tmpRow = '<tr><td>' + parseInt(key + 1) + '</td><td>' + value.account + '</td><td>************</td><td class="text-danger text-right"><button class="btn btn-danger delete"></button></td></tr>';
+                    var tmpRow = '<tr><td>' + parseInt(key + 1) + '</td><td>' + value.account + '</td><td data-code="' + value.code + '">************</td><td class="text-danger text-right"><button class="btn btn-danger delete"></button></td></tr>';
                     $('#list-secrets tbody').append(tmpRow);
                 });
                 $('.delete').html(SAuthButtonDelete).on('click', function(){
@@ -126,7 +128,7 @@ $(function() {
             browser.storage.local.get('listSecrets').then(function(item) {
                 var SAuthButtonDelete = browser.i18n.getMessage('SAuthButtonDelete');
                 var tmpAccount = $(rowSecret[0].childNodes[1]).html();
-                var tmpCode = $(rowSecret[0].childNodes[2]).html();
+                var tmpCode = $(rowSecret[0].childNodes[2]).data('code');
                 var newListSecrets = $.grep(item.listSecrets, function( n, i ) {
                     var tmpSupp = { account: tmpAccount, code: tmpCode };
                     return n.code != tmpSupp.code;
@@ -136,7 +138,7 @@ $(function() {
                 // update table
                 $('#list-secrets  tbody').html('');
                 $.each(newListSecrets, function( key, value ) {
-                    var tmpRow = '<tr><td>' + parseInt(key + 1) + '</td><td>' + value.account + '</td><td>************</td><td class="text-danger text-right"><button class="btn btn-danger delete"></button></td></tr>';
+                    var tmpRow = '<tr><td>' + parseInt(key + 1) + '</td><td>' + value.account + '</td><td data-code="' + value.code + '">************</td><td class="text-danger text-right"><button class="btn btn-danger delete"></button></td></tr>';
                     $('#list-secrets tbody').append(tmpRow);
                 });
                 $('.delete').html(SAuthButtonDelete).on('click', function(){
