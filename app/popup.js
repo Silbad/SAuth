@@ -58,15 +58,16 @@ $(function() {
             if (item.sessionDate != undefined) {
                 // update session date
                 var now = new Date();
-                var time = item.sessionDate;
-                var ecartSession = now.getTime() - time.getTime();
+                var tmpTime = item.sessionDate;
+                var ecartSession = now.getTime() - tmpTime;
 
                 // test sessionDate and 5min session
                 if (ecartSession > 300000) {
                     $('.list-auth').append('<div class="d-flex align-items-center flex-column pin-login no-border"><label for="pin-session">' + browser.i18n.getMessage('SAuthLabelPIN') + '</label><input id="pin-session" class="form-control" type="password" maxlength="4" value="" /></div>');
                     $('#pin-session').off().on('keyup keypress blur change', function(e) {
                         if (($(this).val().length == 4) && ($(this).val() == item.pin)) {
-                            browser.storage.local.set({ sessionDate:  new Date() });
+                            var tmpNow = new Date();
+                            browser.storage.local.set({ sessionDate: tmpNow.getTime() });
                             $('.pin-login').remove();
                             var tmpNb = 0;
                             $.each(item.listSecrets, function( key, value ) {
@@ -104,7 +105,8 @@ $(function() {
                 $('.list-auth').append('<div class="d-flex align-items-center flex-column pin-login no-border"><label for="pin-session">' + browser.i18n.getMessage('SAuthLabelPIN') + '</label><input id="pin-session" class="form-control" type="password" maxlength="4" value="" /></div>');
                 $('#pin-session').off().on('keyup keypress blur change', function(e) {
                     if (($(this).val().length == 4) && ($(this).val() == item.pin)) {
-                        browser.storage.local.set({ sessionDate:  new Date() });
+                        var tmpNow = new Date();
+                        browser.storage.local.set({ sessionDate: tmpNow.getTime() });
                         $('.pin-login').remove();
                         var tmpNb = 0;
                         $.each(item.listSecrets, function( key, value ) {
