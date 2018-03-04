@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "__MSG_SAuthName__",
-	"version": "1.0.2",
+	"version": "1.1.0",
 	"description": "__MSG_SAuthDescription__",
 	"homepage_url": "https://github.com/Silbad/SAuth",
 	"default_locale": "en",
@@ -9,7 +9,7 @@
 		"48": "icons/logo-48.png",
 		"96": "icons/logo@2x.png"
 	},
-	"permissions": ["storage", "clipboardWrite", "clipboardRead"],
+	"permissions": ["storage", "clipboardWrite"],
 	"developer": {
 		"name": "Silbad",
 		"url": "https://github.com/Silbad/SAuth"

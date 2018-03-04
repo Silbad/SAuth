@@ -8373,13 +8373,16 @@ body {
 .version {
   color: #0080FF; }
 
+.list-auth {
+  background-color: white; }
+
 .list-auth > div {
-  width: 360px;
+  width: 338px;
   border-radius: 4px;
   border: 2px solid #eeeeee;
   box-shadow: inset 0px 0px 0px 1px #bbbbbb;
   cursor: pointer;
-  margin-top: 5px; }
+  margin-top: 6px; }
   .list-auth > div:first-child {
     margin-top: 0; }
   .list-auth > div:hover, .list-auth > div:active, .list-auth > div:focus {
@@ -8404,3 +8407,8 @@ body {
 
 #pin-session {
   width: 50px; }
+
+#value-hidden {
+  position: absolute;
+  left: -99999px;
+  width: 0; }

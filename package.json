@@ -1,6 +1,6 @@
 {
   "name": "SAuth",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "All token secrets for two-factor authentication",
   "main": "index.js",
   "repository": "https://github.com/Silbad/SAuth",

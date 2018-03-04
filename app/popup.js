@@ -27,6 +27,12 @@ $(function() {
         var loop = time % 30;
         var start = Math.round(((1 / 30) * loop) * 100) / 100;
         var duration = 30000 - (loop  * 1000);
+        // update height container
+        $('.container-list').css({
+            'height': '264px',
+            'overflow-y': 'scroll',
+            'overflow-x': 'hidden'
+        });
         // animation circleProgress
         $('.circle').circleProgress({
             value: 1.0,
@@ -46,16 +52,30 @@ $(function() {
                 animation: { duration: 30000, easing: "linear" }
             }, 'redraw');
         });
+        // add copy event
+        $('.secret-container').on('click', function() {
+            var tmpCopy = $(this).find('.value').text();
+            $('#value-hidden').val(tmpCopy).select();
+            document.execCommand('Copy');
+            $('#success-copy').css({'visibility': 'visible', 'opacity': 1.0});
+            var tmpSetTimeout = setTimeout(function(){
+                $('#success-copy').animate({
+                    opacity: 0.0
+                }, 500, function() {
+                    $('#success-copy').css('visibility', 'hidden');
+                });
+            }, 1000);
+        });
     }
 
     // show codes
     browser.storage.local.get(['pin', 'listSecrets', 'sessionDate']).then(function(item) {
 
         // test code pin and if secret
-        if ((item.pin != undefined) && (item.listSecrets != undefined)) {
+        if ((item.pin != undefined) && (item.pin != '') && (item.listSecrets != undefined) && (item.listSecrets != '')) {
 
             // test session
-            if (item.sessionDate != undefined) {
+            if ((item.sessionDate != undefined) && (item.sessionDate != undefined)) {
                 // update session date
                 var now = new Date();
                 var tmpTime = item.sessionDate;
@@ -88,7 +108,7 @@ $(function() {
 
                     var tmpNb = 0;
                     $.each(item.listSecrets, function( key, value ) {
-                        var tmpSecret = '<div class="d-flex align-items-center p-2"><div class="secret"><div class="code"><span class="value" data-code="' + value.code + '">' + otplib.authenticator.generate(value.code) + '</span><br /><span class="text">' + value.account + '</span></div></div><div class="clock"><div class="circle"></div></div></div>';
+                        var tmpSecret = '<div class="d-flex align-items-center p-2 secret-container"><div class="secret"><div class="code"><span class="value" data-code="' + value.code + '">' + otplib.authenticator.generate(value.code) + '</span><br /><span class="text">' + value.account + '</span></div></div><div class="clock"><div class="circle"></div></div></div>';
                         $('.list-auth').append(tmpSecret);
                         tmpNb++;
                     });
@@ -110,7 +130,7 @@ $(function() {
                         $('.pin-login').remove();
                         var tmpNb = 0;
                         $.each(item.listSecrets, function( key, value ) {
-                            var tmpSecret = '<div class="d-flex align-items-center p-2"><div class="secret"><div class="code"><span class="value" data-code="' + value.code + '">' + otplib.authenticator.generate(value.code) + '</span><br /><span class="text">' + value.account + '</span></div></div><div class="clock"><div class="circle"></div></div></div>';
+                            var tmpSecret = '<div class="d-flex align-items-center p-2 secret-container"><div class="secret"><div class="code"><span class="value" data-code="' + value.code + '">' + otplib.authenticator.generate(value.code) + '</span><br /><span class="text">' + value.account + '</span></div></div><div class="clock"><div class="circle"></div></div></div>';
                             $('.list-auth').append(tmpSecret);
                             tmpNb++;
                         });
