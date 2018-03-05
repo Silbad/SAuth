@@ -91,7 +91,7 @@ $(function() {
                             $('.pin-login').remove();
                             var tmpNb = 0;
                             $.each(item.listSecrets, function( key, value ) {
-                                var tmpSecret = '<div class="d-flex align-items-center p-2"><div class="secret"><div class="code"><span class="value" data-code="' + value.code + '">' + otplib.authenticator.generate(value.code) + '</span><br /><span class="text">' + value.account + '</span></div></div><div class="clock"><div class="circle"></div></div></div>';
+                                var tmpSecret = '<div class="d-flex align-items-center p-2 secret-container"><div class="secret"><div class="code"><span class="value" data-code="' + value.code + '">' + otplib.authenticator.generate(value.code) + '</span><br /><span class="text">' + value.account + '</span></div></div><div class="clock"><div class="circle"></div></div></div>';
                                 $('.list-auth').append(tmpSecret);
                                 tmpNb++;
                             });
