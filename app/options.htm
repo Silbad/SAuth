@@ -47,7 +47,7 @@
 
             <h2 id="secrets"></h2>
 
-            <form id="form-options-secrets" class="form-inline p-2">
+            <form id="form-options-secrets-create" class="form-inline p-2">
 
                 <div class="form-group mr-2">
                     <label id="label-secret-account" class="mr-2" for="sauth-secret-account"></label><input id="sauth-secret-account" type="text" class="form-control" value="" />
@@ -58,6 +58,16 @@
                 </div>
 
                 <button id="add" type="submit" class="btn btn-primary"></button>
+
+            </form>
+
+            <form id="form-options-secrets-update" class="form-inline p-2">
+
+                <div class="form-group mr-2">
+                    <label id="label-secret-account-update" class="mr-2" for="sauth-secret-account-update"></label><input id="sauth-secret-account-update" type="text" class="form-control" value="" />
+                </div>
+                <input id="sauth-secret-id-update" type="hidden" class="form-control" value="" />
+                <button id="cancel" type="button" class="btn btn-default mr-2"></button> <button id="update" type="submit" class="btn btn-primary"></button>
 
             </form>
 
@@ -76,10 +86,21 @@
 
             <br />
 
+            <h2 id="session"></h2>
+
+            <form id="form-options-duration" class="form-inline p-2">
+                <div class="form-group mr-2">
+                    <label id="label-duration" class="mr-2" for="sauth-duration"></label><span id="label-seconds" class="mr-2"></span><input id="sauth-duration" type="number" class="form-control mr-2" value="0" min="0" /> <label id="label-pin-session" class="mr-2" for="sauth-pin-session"></label><input id="sauth-pin-session" type="password" class="form-control" maxlength="4" />
+                </div>
+                <button type="submit" class="btn btn-primary save"></button>
+            </form>
+
+            <br />
+
             <h2 id="data"></h2>
 
             <form id="form-options-data" class="p-2">
-                <button id="reset" type="submit" class="btn btn-danger pull-right"></button>
+                <button id="reset" type="submit" class="btn btn-danger"></button>
             </form>
 
         </div>

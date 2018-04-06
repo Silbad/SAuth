@@ -39,6 +39,14 @@
         "message": "Secret",
         "description": "Libellé du secret"
     },
+    "SAuthLabelSession": {
+        "message": "Session",
+        "description": "Libellé session"
+    },
+    "SAuthLabelDuration": {
+        "message": "Durée de session",
+        "description": "Libellé durée de session"
+    },
     "SAuthLabelData": {
         "message": "Données",
         "description": "Libellé données"
@@ -54,6 +62,14 @@
     "SAuthButtonDelete": {
         "message": "Supprimer",
         "description": "Libellé bouton supprimer"
+    },
+    "SAuthButtonUpdate": {
+        "message": "Modifier",
+        "description": "Libellé bouton modifier"
+    },
+    "SAuthButtonCancel": {
+        "message": "Annuler",
+        "description": "Libellé bouton annuler"
     },
     "SAuthButtonReset": {
         "message": "Ré-initialiser DEFINITIVEMENT vos données",
@@ -75,8 +91,20 @@
         "message": "Mise à jour du code PIN réussie.",
         "description": "Texte confirmation mise à jour code PIN"
     },
+    "SAuthAlertFormDurationSuccess": {
+        "message": "Mise à jour de la durée de session réussie.",
+        "description": "Texte confirmation mise à jour de la durée de session"
+    },
     "SAuthConfirmReset": {
         "message": "Etes-vous sûr de vouloir ré-initialiser DEFINITIVEMENT toutes vos données ?",
         "description": "Texte de la confirmation de ré-initialisation des données"
+    },
+    "SAuthCopy": {
+        "message": "copie",
+        "description": "Libellé copie"
+    },
+    "SAuthSeconds": {
+        "message": "secondes",
+        "description": "Libellé secondes"
     }
 }

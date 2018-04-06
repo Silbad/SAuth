@@ -8363,7 +8363,10 @@ body {
 .table {
   margin-top: 15px; }
   .table tr td:last-child {
-    width: 1px; }
+    width: 70px; }
+    .table tr td:last-child a {
+      margin-left: 10px;
+      cursor: pointer; }
 
 #form-options-secrets input {
   width: 300px; }

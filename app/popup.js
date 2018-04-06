@@ -1,5 +1,8 @@
 $(function() {
 
+    // update json (for new version)
+    updateJSON();
+
     // add localization i18n items
     var SAuthClipboard = browser.i18n.getMessage('SAuthClipboard');
 
@@ -20,6 +23,25 @@ $(function() {
     // version
     var manifest = chrome.runtime.getManifest();
     $('.version').html(manifest.version);
+
+    // update json if necessary
+    function updateJSON() {
+        browser.storage.local.get('listSecrets').then(function(item) {
+            var data = item.listSecrets;
+            if (data != undefined) {
+                // add ID
+                if (data[0].id == undefined) {
+                    var listSecrets = [];
+                    $.each(data, function(i, value) {
+                        var tmpSecret = { id: parseInt(i) + 1, account: value.account, code: value.code };
+                        listSecrets.push(tmpSecret);
+                    });
+                    // save data
+                    browser.storage.local.set({ listSecrets: listSecrets });
+                }
+            }
+        });
+    };
 
     // timeLoop
     function timeLoop() {
@@ -69,7 +91,7 @@ $(function() {
     }
 
     // show codes
-    browser.storage.local.get(['pin', 'listSecrets', 'sessionDate']).then(function(item) {
+    browser.storage.local.get(['pin', 'listSecrets', 'sessionDate', 'sessionDuration']).then(function(item) {
 
         // test code pin and if secret
         if ((item.pin != undefined) && (item.pin != '') && (item.listSecrets != undefined) && (item.listSecrets != '')) {
@@ -80,9 +102,13 @@ $(function() {
                 var now = new Date();
                 var tmpTime = item.sessionDate;
                 var ecartSession = now.getTime() - tmpTime;
+                var duration = item.sessionDuration;
+                if (duration == undefined) {
+                    duration = 300;
+                }
 
                 // test sessionDate and 5min session
-                if (ecartSession > 300000) {
+                if (ecartSession > (duration * 1000)) {
                     $('.list-auth').append('<div class="d-flex align-items-center flex-column pin-login no-border"><label for="pin-session">' + browser.i18n.getMessage('SAuthLabelPIN') + '</label><input id="pin-session" class="form-control" type="password" maxlength="4" value="" /></div>');
                     $('#pin-session').off().on('keyup keypress blur change', function(e) {
                         if (($(this).val().length == 4) && ($(this).val() == item.pin)) {

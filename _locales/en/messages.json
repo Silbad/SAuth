@@ -1,11 +1,11 @@
 {
     "SAuthName": {
         "message": "SAuth",
-        "description": "Nom de l'extension"
+        "description": "Name of the extension"
     },
     "SAuthDescription": {
         "message": "All token secrets for two-factor authentication",
-        "description": "Description de l'extension"
+        "description": "Description of the extension"
     },
     "SAuthLabelSecurity": {
         "message": "Security",
@@ -39,6 +39,14 @@
         "message": "Code",
         "description": "Label secret code"
     },
+    "SAuthLabelSession": {
+        "message": "Session",
+        "description": "Label session"
+    },
+    "SAuthLabelDuration": {
+        "message": "Session duration",
+        "description": "Label session duration"
+    },
     "SAuthLabelData": {
         "message": "Data",
         "description": "Label data"
@@ -54,6 +62,14 @@
     "SAuthButtonDelete": {
         "message": "Delete",
         "description": "Label delete button"
+    },
+    "SAuthButtonUpdate": {
+        "message": "Update",
+        "description": "Label update button"
+    },
+    "SAuthButtonCancel": {
+        "message": "Cancel",
+        "description": "Label cancel button"
     },
     "SAuthButtonReset": {
         "message": "Reset your data DEFINITIVELY",
@@ -75,8 +91,20 @@
         "message": "Successful PIN code update.",
         "description": "Confirmation text updated PIN code update"
     },
+    "SAuthAlertFormDurationSuccess": {
+        "message": "Successful session duration update.",
+        "description": "Confirmation text updated session duration update"
+    },
     "SAuthConfirmReset": {
         "message": "Are you sure you want to reset DEFINITIVELY all your data?",
         "description": "Data reset confirmation confirmation text"
+    },
+    "SAuthCopy": {
+        "message": "copy",
+        "description": "Label copy"
+    },
+    "SAuthSeconds": {
+        "message": "Seconds",
+        "description": "Label seconds"
     }
 }
