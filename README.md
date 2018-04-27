@@ -6,6 +6,7 @@ Available in french and english.
 ![SAuth](./screenshots/sauth_1.2.0_1.png)
 ![SAuth](./screenshots/sauth_1.2.0_2.png)
 ![SAuth](./screenshots/sauth_1.2.0_3.png)
+![SAuth](./screenshots/sauth_1.2.1_4.png)
 
 ## Firefox Add-ons
 [https://addons.mozilla.org/fr/firefox/addon/sauth/](https://addons.mozilla.org/fr/firefox/addon/sauth/)

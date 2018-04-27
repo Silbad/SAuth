@@ -122,6 +122,7 @@ $(function() {
                 }
             });
             var tmpCode = $('#sauth-secret-code').val();
+            tmpCode = tmpCode.replace(/\s/g,''); // remove all whitespace (whitespace for Amazon key)
             if (($.trim(tmpAccount) != '') && ($.trim(tmpCode) != '')) {
                 var newId = 1;
                 $.each(listSecrets, function( key, value ) {
