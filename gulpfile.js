@@ -21,6 +21,20 @@ gulp.task('sync-jquery', (done) => {
     });
 });
 
+gulp.task('sync-qrcode-generator', (done) => {
+    syncy(['node_modules/qrcode-generator/*qrcode.js'], 'js/', {
+        verbose: true,
+        updateAndDelete: false,
+        base: 'node_modules/qrcode-generator/'
+    })
+    .then(() => {
+        done();
+    })
+    .catch((err) => {
+        done(err);
+    });
+});
+
 gulp.task('sync-otplib', (done) => {
     syncy(['node_modules/otplib/*otplib-browser.js'], 'js/', {
         verbose: true,
@@ -124,4 +138,4 @@ gulp.task('watch', function () {
     gulp.watch('scss/**/*.scss', ['sass-options']);
 });
 
-gulp.task('default', ['sync-jquery', 'sync-otplib', 'sync-jquery-circle-progress', 'sync-popper', 'sync-bootstrap', 'sync-fa', 'sass-popup', 'sass-options', 'watch']);
+gulp.task('default', ['sync-jquery', 'sync-qrcode-generator', 'sync-otplib', 'sync-jquery-circle-progress', 'sync-popper', 'sync-bootstrap', 'sync-fa', 'sass-popup', 'sass-options', 'watch']);

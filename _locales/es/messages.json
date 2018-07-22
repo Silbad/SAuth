@@ -1,0 +1,114 @@
+{
+    "SAuthName": {
+        "message": "SAuth",
+        "description": "Nombre de la extensión"
+    },
+    "SAuthDescription": {
+        "message": "Todos los códigos secretos para la autenticación de dos factores",
+        "description": "Descripción de la extensión"
+    },
+    "SAuthLabelSecurity": {
+        "message": "Seguridad",
+        "description": "Etiqueta de seguridad"
+    },
+    "SAuthLabelPIN": {
+        "message": "código PIN",
+        "description": "Etiqueta con código PIN"
+    },
+    "SAuthButtonSave": {
+        "message": "Registrarse",
+        "description": "Botón etiquetar guardar"
+    },
+    "SAuthLabelListSecrets": {
+        "message": "Lista de secretos",
+        "description": "Etiqueta lista de secretos"
+    },
+    "SAuthLabelPINOld": {
+        "message": "PIN antiguo",
+        "description": "Etiqueta PIN antigua"
+    },
+    "SAuthLabelPINNew": {
+        "message": "Nuevo PIN",
+        "description": "Redacción del nuevo PIN"
+    },
+    "SAuthLabelSecretIssuer": {
+        "message": "Proveedor",
+        "description": "Texto del Proveedor"
+    },
+    "SAuthLabelSecretAccount": {
+        "message": "Cuenta",
+        "description": "Etiqueta de texto de la cuenta"
+    },
+    "SAuthLabelSecretCode": {
+        "message": "Secret",
+        "description": "Secreto"
+    },
+    "SAuthLabelSession": {
+        "message": "Session",
+        "description": "Libellé session"
+    },
+    "SAuthLabelDuration": {
+        "message": "Durée de session",
+        "description": "Duración de la sesión"
+    },
+    "SAuthLabelData": {
+        "message": "Datos",
+        "description": "Etiqueta de datos"
+    },
+    "SAuthClipboard": {
+        "message": "código copiado al bloc de notas",
+        "description": "Textos notas en bloque"
+    },
+    "SAuthButtonAdd": {
+        "message": "Añadir",
+        "description": "Botón de etiqueta añadir"
+    },
+    "SAuthButtonDelete": {
+        "message": "Borrar",
+        "description": "Botón Borrar Etiqueta"
+    },
+    "SAuthButtonUpdate": {
+        "message": "Modificar",
+        "description": "Cambio de botón de etiqueta"
+    },
+    "SAuthButtonCancel": {
+        "message": "Anulador",
+        "description": "Botón de cancelación de etiquetas"
+    },
+    "SAuthButtonReset": {
+        "message": "Reset DEFINITIVAMENTE sus datos",
+        "description": "Botón de reajuste de etiquetas"
+    },
+    "SAuthConfirmDelete": {
+        "message": "¿Estás seguro de que quieres deshacerte de ese secreto?",
+        "description": "Borrado del texto de confirmación del secreto"
+    },
+    "SAuthAlertForm": {
+        "message": "Error: algunos campos no son válidos!",
+        "description": "Texto de error devuelto si el formulario no es válido"
+    },
+    "SAuthConfigurationText": {
+        "message": "SAuth está casi listo.<br />Un código PIN y al menos un secreto debe ser configurado en las opciones.",
+        "description": "Texto si las opciones no están configuradas"
+    },
+    "SAuthAlertFormPinSuccess": {
+        "message": "Actualización de código PIN exitosa.",
+        "description": "Confirmación de texto código PIN actualizado"
+    },
+    "SAuthAlertFormDurationSuccess": {
+        "message": "Actualización exitosa de la duración de la sesión.",
+        "description": "Texto de confirmación actualizado para la duración de la sesión"
+    },
+    "SAuthConfirmReset": {
+        "message": "¿Está seguro de que desea reset DEFINITIVAMENTE todos sus datos?",
+        "description": "Texto de la notificación de anulación de datos"
+    },
+    "SAuthCopy": {
+        "message": "facsímil",
+        "description": "Redacción de textos"
+    },
+    "SAuthSeconds": {
+        "message": "segundos",
+        "description": "Etiqueta segundos"
+    }
+}

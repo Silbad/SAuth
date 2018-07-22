@@ -1,29 +1,5 @@
 $(function() {
 
-    // update json (for new version)
-    updateJSON();
-
-    // add localization i18n items
-    var SAuthClipboard = browser.i18n.getMessage('SAuthClipboard');
-
-    $('#clipboard').html(SAuthClipboard);
-
-    // add event to open params
-    $('.params .fa-cog').on('click', function(){
-        browser.runtime.openOptionsPage();
-    });
-
-    // add event to open GitHub repository
-    $('.params .fa-github').on('click', function(){
-        browser.tabs.create({
-            url: 'https://github.com/Silbad/SAuth'
-        });
-    });
-
-    // version
-    var manifest = chrome.runtime.getManifest();
-    $('.version').html(manifest.version);
-
     // update json if necessary
     function updateJSON() {
         browser.storage.local.get('listSecrets').then(function(item) {
@@ -40,6 +16,22 @@ $(function() {
                     browser.storage.local.set({ listSecrets: listSecrets });
                 }
             }
+
+            browser.storage.local.get('listSecrets').then(function(item) {
+                var data = item.listSecrets;
+                if (data != undefined) {
+                    // add issuer
+                    if (data[0].issuer == undefined) {
+                        var listSecrets = [];
+                        $.each(data, function(i, value) {
+                            var tmpSecret = { id: value.id, issuer: '', account: value.account, code: value.code };
+                            listSecrets.push(tmpSecret);
+                        });
+                        // save data
+                        browser.storage.local.set({ listSecrets: listSecrets });
+                    }
+                }
+            });
         });
     };
 
@@ -51,7 +43,7 @@ $(function() {
         var duration = 30000 - (loop  * 1000);
         // update height container
         $('.container-list').css({
-            'height': '264px',
+            'height': '300px',
             'overflow-y': 'scroll',
             'overflow-x': 'hidden'
         });
@@ -90,6 +82,30 @@ $(function() {
         });
     }
 
+    // update json (for new version)
+    updateJSON();
+
+    // add localization i18n items
+    var SAuthClipboard = browser.i18n.getMessage('SAuthClipboard');
+
+    $('#clipboard').html(SAuthClipboard);
+
+    // add event to open params
+    $('.params .fa-cog').on('click', function(){
+        browser.runtime.openOptionsPage();
+    });
+
+    // add event to open GitHub repository
+    $('.params .fa-github').on('click', function(){
+        browser.tabs.create({
+            url: 'https://github.com/Silbad/SAuth'
+        });
+    });
+
+    // version
+    var manifest = chrome.runtime.getManifest();
+    $('.version').html(manifest.version);
+
     // show codes
     browser.storage.local.get(['pin', 'listSecrets', 'sessionDate', 'sessionDuration']).then(function(item) {
 
@@ -117,8 +133,14 @@ $(function() {
                             $('.pin-login').remove();
                             var tmpNb = 0;
                             $.each(item.listSecrets, function( key, value ) {
-                                var tmpSecret = '<div class="d-flex align-items-center p-2 secret-container"><div class="secret"><div class="code"><span class="value" data-code="' + value.code + '">' + otplib.authenticator.generate(value.code) + '</span><br /><span class="text">' + value.account + '</span></div></div><div class="clock"><div class="circle"></div></div></div>';
+                                var tmpSecret = '<div class="d-flex align-items-center p-2 secret-container"><div id="qrcode' + value.id + '" class="qrcode"></div><div class="secret"><div class="code"><span class="value" data-code="' + value.code + '">' + otplib.authenticator.generate(value.code) + '</span><br /><span class="text font-weight-bold">' + value.issuer + '</span><br /><span class="text">' + value.account + '</span></div></div><div class="clock"><div class="circle"></div></div></div>';
                                 $('.list-auth').append(tmpSecret);
+                                var typeNumber = 6;
+                                var errorCorrectionLevel = 'L';
+                                var qr = qrcode(typeNumber, errorCorrectionLevel);
+                                qr.addData(encodeURI('otpauth://totp/' + value.issuer + ':' + value.account + '?secret=' + value.code) + '&issuer=' + value.issuer);
+                                qr.make();
+                                $('#qrcode' + value.id).html(qr.createImgTag());
                                 tmpNb++;
                             });
                             // test if secret
@@ -134,8 +156,14 @@ $(function() {
 
                     var tmpNb = 0;
                     $.each(item.listSecrets, function( key, value ) {
-                        var tmpSecret = '<div class="d-flex align-items-center p-2 secret-container"><div class="secret"><div class="code"><span class="value" data-code="' + value.code + '">' + otplib.authenticator.generate(value.code) + '</span><br /><span class="text">' + value.account + '</span></div></div><div class="clock"><div class="circle"></div></div></div>';
+                        var tmpSecret = '<div class="d-flex align-items-center p-2 secret-container"><div id="qrcode' + value.id + '" class="qrcode"></div><div class="secret"><div class="code"><span class="value" data-code="' + value.code + '">' + otplib.authenticator.generate(value.code) + '</span><br /><span class="text font-weight-bold">' + value.issuer + '</span><br /><span class="text">' + value.account + '</span></div></div><div class="clock"><div class="circle"></div></div></div>';
                         $('.list-auth').append(tmpSecret);
+                        var typeNumber = 6;
+                        var errorCorrectionLevel = 'L';
+                        var qr = qrcode(typeNumber, errorCorrectionLevel);
+                        qr.addData(encodeURI('otpauth://totp/' + value.issuer + ':' + value.account + '?secret=' + value.code) + '&issuer=' + value.issuer);
+                        qr.make();
+                        $('#qrcode' + value.id).html(qr.createImgTag());
                         tmpNb++;
                     });
                     // test if secret
@@ -156,8 +184,14 @@ $(function() {
                         $('.pin-login').remove();
                         var tmpNb = 0;
                         $.each(item.listSecrets, function( key, value ) {
-                            var tmpSecret = '<div class="d-flex align-items-center p-2 secret-container"><div class="secret"><div class="code"><span class="value" data-code="' + value.code + '">' + otplib.authenticator.generate(value.code) + '</span><br /><span class="text">' + value.account + '</span></div></div><div class="clock"><div class="circle"></div></div></div>';
+                            var tmpSecret = '<div class="d-flex align-items-center p-2 secret-container"><div id="qrcode' + value.id + '" class="qrcode"></div><div class="secret"><div class="code"><span class="value" data-code="' + value.code + '">' + otplib.authenticator.generate(value.code) + '</span><br /><span class="text font-weight-bold">' + value.issuer + '</span><br /><span class="text">' + value.account + '</span></div></div><div class="clock"><div class="circle"></div></div></div>';
                             $('.list-auth').append(tmpSecret);
+                            var typeNumber = 6;
+                            var errorCorrectionLevel = 'L';
+                            var qr = qrcode(typeNumber, errorCorrectionLevel);
+                            qr.addData(encodeURI('otpauth://totp/' + value.issuer + ':' + value.account + '?secret=' + value.code) + '&issuer=' + value.issuer);
+                            qr.make();
+                            $('#qrcode' + value.id).html(qr.createImgTag());
                             tmpNb++;
                         });
                         // test if secret

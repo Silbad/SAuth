@@ -31,6 +31,10 @@
         "message": "New PIN",
         "description": "Label new PIN"
     },
+    "SAuthLabelSecretIssuer": {
+        "message": "Provider",
+        "description": "Label provider"
+    },
     "SAuthLabelSecretAccount": {
         "message": "Account",
         "description": "Label secret account"

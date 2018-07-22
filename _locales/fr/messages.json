@@ -31,6 +31,10 @@
         "message": "Nouveau PIN",
         "description": "Libellé nouveau PIN"
     },
+    "SAuthLabelSecretIssuer": {
+        "message": "Prestataire",
+        "description": "Libellé du texte du prestataire"
+    },
     "SAuthLabelSecretAccount": {
         "message": "Compte",
         "description": "Libellé du texte du compte"

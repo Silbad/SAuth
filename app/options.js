@@ -27,6 +27,7 @@ $(function() {
     var SAuthLabelListSecrets = browser.i18n.getMessage('SAuthLabelListSecrets');
     var SAuthLabelPINOld = browser.i18n.getMessage('SAuthLabelPINOld');
     var SAuthLabelPINNew = browser.i18n.getMessage('SAuthLabelPINNew');
+    var SAuthLabelSecretIssuer = browser.i18n.getMessage('SAuthLabelSecretIssuer');
     var SAuthLabelSecretAccount = browser.i18n.getMessage('SAuthLabelSecretAccount');
     var SAuthLabelSecretCode = browser.i18n.getMessage('SAuthLabelSecretCode');
     var SAuthLabelSession = browser.i18n.getMessage('SAuthLabelSession');
@@ -45,6 +46,7 @@ $(function() {
     $('#secrets').html(SAuthLabelListSecrets);
     $('#label-pin-old').html(SAuthLabelPINOld);
     $('#label-pin-new').html(SAuthLabelPINNew);
+    $('#label-secret-issuer, .label-secret-issuer, #label-secret-issuer-update').html(SAuthLabelSecretIssuer);
     $('#label-secret-account, .label-secret-account, #label-secret-account-update').html(SAuthLabelSecretAccount);
     $('#label-secret-code, .label-secret-code').html(SAuthLabelSecretCode);
     $('#session').html(SAuthLabelSession);
@@ -115,26 +117,28 @@ $(function() {
                 var listSecrets = [];
             }
             var tmpAccount = $('#sauth-secret-account').val();
+            var tmpIssuer = $('#sauth-secret-issuer').val();
             var SAuthCopy = browser.i18n.getMessage('SAuthCopy');
             $.each(item.listSecrets, function(i, value) {
-                if (value.account == tmpAccount) {
+                if ((value.issuer == tmpIssuer) && (value.account == tmpAccount)) {
                     tmpAccount = tmpAccount + ' - ' + SAuthCopy;
                 }
             });
             var tmpCode = $('#sauth-secret-code').val();
             tmpCode = tmpCode.replace(/\s/g,''); // remove all whitespace (whitespace for Amazon key)
-            if (($.trim(tmpAccount) != '') && ($.trim(tmpCode) != '')) {
+            if (($.trim(tmpIssuer) != '') && ($.trim(tmpAccount) != '') && ($.trim(tmpCode) != '')) {
                 var newId = 1;
                 $.each(listSecrets, function( key, value ) {
                     newId = parseInt(value.id) + 1;
                 });
-                var tmpSecret = { id: newId, account: tmpAccount, code: tmpCode };
+                var tmpSecret = { id: newId, issuer: tmpIssuer, account: tmpAccount, code: tmpCode };
                 listSecrets.push(tmpSecret);
                 // save form
                 browser.storage.local.set({ listSecrets: listSecrets });
                 // update table
                 updateTable(listSecrets);
                 // empty form
+                $('#sauth-secret-issuer').val('');
                 $('#sauth-secret-account').val('');
                 $('#sauth-secret-code').val('');
             } else {
@@ -144,34 +148,34 @@ $(function() {
         event.preventDefault();
     });
 
-    // update label account
+    // update issuer & account
     $('#form-options-secrets-update').submit(function(event) {
 
         browser.storage.local.get('listSecrets').then(function(item) {
             var tmpId = $('#sauth-secret-id-update').val();
+            var tmpIssuer = $('#sauth-secret-issuer-update').val();
             var tmpAccount = $('#sauth-secret-account-update').val();
             var SAuthCopy = browser.i18n.getMessage('SAuthCopy');
-            $.each(item.listSecrets, function(i, value) {
-                if (value.account == tmpAccount) {
-                    tmpAccount = tmpAccount + ' - ' + SAuthCopy;
-                }
-            });
             var newListSecrets = [];
             var tmpSecret = {};
-            $.each(item.listSecrets, function(i, value) {
-                if (value.id != tmpId) {
-                    tmpSecret = { id: value.id, account: value.account, code: value.code };
-                } else {
-                    tmpSecret = { id: value.id, account: tmpAccount, code: value.code };
-                }
-                newListSecrets.push(tmpSecret);
-            });
-            // save
-            browser.storage.local.set({ listSecrets: newListSecrets });
-            // update table
-            updateTable(newListSecrets);
-            // close update form
-            cancelUpdate();
+            if (($.trim(tmpIssuer) != '') && ($.trim(tmpAccount) != '')) {
+                $.each(item.listSecrets, function(i, value) {
+                    if (value.id != tmpId) {
+                        tmpSecret = { id: value.id, issuer: value.issuer, account: value.account, code: value.code };
+                    } else {
+                        tmpSecret = { id: value.id, issuer: tmpIssuer, account: tmpAccount, code: value.code };
+                    }
+                    newListSecrets.push(tmpSecret);
+                });
+                // save
+                browser.storage.local.set({ listSecrets: newListSecrets });
+                // update table
+                updateTable(newListSecrets);
+                // close update form
+                cancelUpdate();
+            } else {
+                alert(browser.i18n.getMessage('SAuthAlertForm'));
+            }
         });
         event.preventDefault();
     });
@@ -209,6 +213,22 @@ $(function() {
                     browser.storage.local.set({ listSecrets: listSecrets });
                 }
             }
+
+            browser.storage.local.get('listSecrets').then(function(item) {
+                var data = item.listSecrets;
+                if (data != undefined) {
+                    // add issuer
+                    if (data[0].issuer == undefined) {
+                        var listSecrets = [];
+                        $.each(data, function(i, value) {
+                            var tmpSecret = { id: value.id, issuer: '', account: value.account, code: value.code };
+                            listSecrets.push(tmpSecret);
+                        });
+                        // save data
+                        browser.storage.local.set({ listSecrets: listSecrets });
+                    }
+                }
+            });
         });
     };
 
@@ -222,7 +242,7 @@ $(function() {
                 var newListSecrets = [];
                 $.each(item.listSecrets, function(i, value) {
                     if (value.id != tmpId) {
-                        var tmpSecret = { id: value.id, account: value.account, code: value.code };
+                        var tmpSecret = { id: value.id, issuer: value.issuer, account: value.account, code: value.code };
                         newListSecrets.push(tmpSecret);
                     }
                 });
@@ -241,7 +261,7 @@ $(function() {
         var SAuthButtonCancel = browser.i18n.getMessage('SAuthButtonCancel');
         $('#list-secrets tbody').html('');
         $.each(listSecrets, function( key, value ) {
-            var tmpRow = '<tr data-row="' + value.id + '"><td>' + value.id + '</td><td>' + value.account + '</td><td>************</td><td class="text-right"><a class="text-primary update"><i class="fa fa-pencil"></i></a><a class="text-danger delete"><i class="fa fa-trash"></i></a></td></tr>';
+            var tmpRow = '<tr data-row="' + value.id + '"><td>' + value.id + '</td><td>' + value.issuer + '</td><td>' + value.account + '</td><td>************</td><td class="text-right"><a class="text-primary update"><i class="fa fa-pencil"></i></a><a class="text-danger delete"><i class="fa fa-trash"></i></a></td></tr>';
             $('#list-secrets tbody').append(tmpRow);
         });
         $('.delete').attr('title', SAuthButtonDelete).on('click', function(){
@@ -258,8 +278,10 @@ $(function() {
     // update label secret
     function updateSecret(rowSecret) {
         var tmpId = $(rowSecret[0]).data('row');
-        var tmpAccount = $(rowSecret[0].childNodes[1]).html();
+        var tmpIssuer = $(rowSecret[0].childNodes[1]).html();
+        var tmpAccount = $(rowSecret[0].childNodes[2]).html();
         $('#sauth-secret-id-update').val(tmpId);
+        $('#sauth-secret-issuer-update').val(tmpIssuer);
         $('#sauth-secret-account-update').val(tmpAccount);
         $('#form-options-secrets-create').hide();
         $('#form-options-secrets-update').show();
@@ -267,6 +289,7 @@ $(function() {
 
     // cancel update label secret
     function cancelUpdate() {
+        $('#sauth-secret-issuer-update').val('');
         $('#sauth-secret-account-update').val('');
         $('#sauth-secret-id-update').val('');
         $('#form-options-secrets-update').hide();
