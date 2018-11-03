@@ -38,10 +38,15 @@ $(function() {
     var SAuthButtonCancel = browser.i18n.getMessage('SAuthButtonCancel');
     var SAuthButtonReset = browser.i18n.getMessage('SAuthButtonReset');
     var SAuthSeconds = browser.i18n.getMessage('SAuthSeconds');
+    var SAuthLabelBackup = browser.i18n.getMessage('SAuthLabelBackup');
+    var SAuthButtonExport = browser.i18n.getMessage('SAuthButtonExport');
+    var SAuthNoSecret = browser.i18n.getMessage('SAuthNoSecret');
+    var SAuthButtonImport = browser.i18n.getMessage('SAuthButtonImport');
+    var SAuthLabelBrowse = browser.i18n.getMessage('SAuthLabelBrowse');
 
     $('#security').html(SAuthLabelSecurity);
     $('#label-pin').html(SAuthLabelPIN);
-    $('#label-pin-session').html(SAuthLabelPIN);
+    $('#label-pin-session, #label-export-pin-session, #label-import-pin-session').html(SAuthLabelPIN);
     $('.save').html(SAuthButtonSave);
     $('#secrets').html(SAuthLabelListSecrets);
     $('#label-pin-old').html(SAuthLabelPINOld);
@@ -57,6 +62,10 @@ $(function() {
     $('#cancel').html(SAuthButtonCancel);
     $('#reset').html(SAuthButtonReset);
     $('#label-seconds').html('(' + SAuthSeconds + ')');
+    $('#backup').html(SAuthLabelBackup);
+    $('#export').html(SAuthButtonExport);
+    $('#import').html(SAuthButtonImport);
+    $('.custom-file-label').html(SAuthLabelBrowse);
 
     // create & update pin code
     browser.storage.local.get('pin').then(function(item) {
@@ -197,6 +206,69 @@ $(function() {
         event.preventDefault();
     });
 
+    // export secrets
+    $('#form-options-export').submit(function(event) {
+        var tmpPin = $('#sauth-export-pin-session').val();
+        browser.storage.local.get(['pin', 'listSecrets']).then(function(item) {
+            if (item.pin == tmpPin) {
+                var dataJson = JSON.stringify(item.listSecrets);
+                var blob = new Blob([dataJson], {
+                    type: "application/json"
+                });
+                var dataUrl = URL.createObjectURL(blob);
+                var dateNow = new Date();
+                var dateFileName = dateNow.getFullYear().toString() + (('0' + (dateNow.getMonth() + 1)).slice(-2)).toString() + (('0' + dateNow.getDate()).slice(-2)).toString() + (('0' + dateNow.getHours()).slice(-2)).toString() + (('0' + dateNow.getMinutes()).slice(-2)).toString() + (('0' + dateNow.getSeconds()).slice(-2)).toString();
+                $('#download').attr('href', dataUrl).attr('download', 'sauth_' + dateFileName + '.json');
+                $('#sauth-export-pin-session').val('');
+                $('#download')[0].click();
+            } else {
+                $('#sauth-export-pin-session').val('');
+                alert(browser.i18n.getMessage('SAuthAlertForm'));
+            }
+        });
+        event.preventDefault();
+    });
+
+    // update input file
+    $('#import-backup').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $('#label-import').html(fileName);
+    });
+
+    // import secrets
+    $('#form-options-import').submit(function(event) {
+        var tmpPin = $('#sauth-import-pin-session').val();
+        browser.storage.local.get(['pin']).then(function(item) {
+            var file = $('#import-backup')[0].files[0];
+            if ((item.pin == tmpPin) && (file != undefined)) {
+                if (confirm(browser.i18n.getMessage('SAuthConfirmImport'))) {
+                    var reader = new FileReader();
+                    reader.onload = (event) => {
+                        if (event.target.readyState === 2) {
+                            var tmpData = JSON.parse(reader.result);
+                            var newListSecrets = [];
+                            $.each(tmpData, function( key, value ) {
+                                tmpSecret = { id: value.id, issuer: value.issuer, account: value.account, code: value.code };
+                                newListSecrets.push(tmpSecret);
+                            });
+                            // save
+                            browser.storage.local.set({ listSecrets: newListSecrets });
+                            // update table
+                            updateTable(newListSecrets);
+                        }
+                    };
+            		reader.readAsText(file);
+                    $('#sauth-import-pin-session').val('');
+                    $('#label-import').html(SAuthLabelBrowse);
+                }
+            } else {
+                $('#sauth-import-pin-session').val('');
+                alert(browser.i18n.getMessage('SAuthAlertForm'));
+            }
+        });
+        event.preventDefault();
+    });
+
     // update json if necessary
     function updateJSON() {
         browser.storage.local.get('listSecrets').then(function(item) {
@@ -260,19 +332,25 @@ $(function() {
         var SAuthButtonUpdate = browser.i18n.getMessage('SAuthButtonUpdate');
         var SAuthButtonCancel = browser.i18n.getMessage('SAuthButtonCancel');
         $('#list-secrets tbody').html('');
-        $.each(listSecrets, function( key, value ) {
-            var tmpRow = '<tr data-row="' + value.id + '"><td>' + value.id + '</td><td>' + value.issuer + '</td><td>' + value.account + '</td><td>************</td><td class="text-right"><a class="text-primary update"><i class="fa fa-pencil"></i></a><a class="text-danger delete"><i class="fa fa-trash"></i></a></td></tr>';
+        if ((listSecrets != undefined) && (listSecrets.length > 0)) {
+            $.each(listSecrets, function( key, value ) {
+                var tmpRow = '<tr data-row="' + value.id + '"><td>' + value.id + '</td><td>' + value.issuer + '</td><td>' + value.account + '</td><td>************</td><td class="text-right"><a class="text-primary update"><i class="fa fa-pencil"></i></a><a class="text-danger delete"><i class="fa fa-trash"></i></a></td></tr>';
+                $('#list-secrets tbody').append(tmpRow);
+            });
+            $('.delete').attr('title', SAuthButtonDelete).on('click', function(){
+                deleteSecret($(this).closest('tr'));
+            });
+            $('.update').attr('title', SAuthButtonUpdate).on('click', function(){
+                updateSecret($(this).closest('tr'));
+            });
+            $('#cancel').attr('title', SAuthButtonCancel).on('click', function(){
+                cancelUpdate();
+            });
+        } else {
+            var tmpRow = '<tr data-row="0"><td id="no-secret" colspan="5" class="text-center"></td></tr>';
             $('#list-secrets tbody').append(tmpRow);
-        });
-        $('.delete').attr('title', SAuthButtonDelete).on('click', function(){
-            deleteSecret($(this).closest('tr'));
-        });
-        $('.update').attr('title', SAuthButtonUpdate).on('click', function(){
-            updateSecret($(this).closest('tr'));
-        });
-        $('#cancel').attr('title', SAuthButtonCancel).on('click', function(){
-            cancelUpdate();
-        });
+            $('#no-secret').html(SAuthNoSecret);
+        }
     }
 
     // update label secret

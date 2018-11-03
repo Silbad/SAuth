@@ -110,5 +110,29 @@
     "SAuthSeconds": {
         "message": "segundos",
         "description": "Etiqueta segundos"
+    },
+    "SAuthLabelBackup": {
+        "message": "Copia de seguridad",
+        "description": "Etiqueta copia de seguridad"
+    },
+    "SAuthButtonExport": {
+        "message": "Exportadora",
+        "description": "Etiqueta exportadora"
+    },
+    "SAuthNoSecret": {
+        "message": "Sin secretos...",
+        "description": "Etiqueta sin secretos"
+    },
+    "SAuthButtonImport": {
+        "message": "Importar",
+        "description": "Etiqueta importar"
+    },
+    "SAuthLabelBrowse": {
+        "message": "Examinar...",
+        "description": "Etiqueta examinar"
+    },
+    "SAuthConfirmImport": {
+        "message": "¿Estás seguro de que quieres importar estos secretos?\nLa lista actual será reemplazada por esta.",
+        "description": "Texto de confirmación de la importación de secretos"
     }
 }

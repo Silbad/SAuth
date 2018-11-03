@@ -110,5 +110,29 @@
     "SAuthSeconds": {
         "message": "Seconds",
         "description": "Label seconds"
+    },
+    "SAuthLabelBackup": {
+        "message": "Backup",
+        "description": "Label backup"
+    },
+    "SAuthButtonExport": {
+        "message": "Export",
+        "description": "Label export"
+    },
+    "SAuthNoSecret": {
+        "message": "No secret...",
+        "description": "Label no secret"
+    },
+    "SAuthButtonImport": {
+        "message": "Import",
+        "description": "Label import"
+    },
+    "SAuthLabelBrowse": {
+        "message": "Browse...",
+        "description": "Label browse"
+    },
+    "SAuthConfirmImport": {
+        "message": "Are you sure you want to import these secrets?\nThe current list will be replaced by this one.",
+        "description": "Confirmation text the import of secrets"
     }
 }

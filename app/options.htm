@@ -104,6 +104,30 @@
 
             <br />
 
+            <h2 id="backup"></h2>
+
+            <form id="form-options-export" class="form-inline p-2">
+                <div class="form-group mr-2">
+                    <label id="label-export-pin-session" class="mr-2" for="sauth-export-pin-session"></label><input id="sauth-export-pin-session" type="password" class="form-control" maxlength="4" />
+                </div>
+                <button id="export" type="submit" class="btn btn-primary export"></button>
+                <a id="download" class="invisible" href="" download=""></a>
+            </form>
+            <form id="form-options-import" class="form-inline p-2">
+                <div class="form-group mr-2">
+                    <label id="label-import-pin-session" class="mr-2" for="sauth-import-pin-session"></label><input id="sauth-import-pin-session" type="password" class="form-control" maxlength="4" />
+                    <div class="input-group ml-2">
+                      <div class="custom-file">
+                        <input id="import-backup" type="file" class="form-control custom-file-input">
+                        <label id="label-import" class="custom-file-label"></label>
+                      </div>
+                    </div>
+                </div>
+                <button id="import" type="submit" class="btn btn-primary import"></button>
+            </form>
+
+            <br />
+
             <h2 id="data"></h2>
 
             <form id="form-options-data" class="p-2">
