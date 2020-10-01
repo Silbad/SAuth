@@ -1,141 +1,102 @@
-'use strict';
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const concat = require('gulp-concat');
+const cleanCSS = require('gulp-clean-css');
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var rename = require('gulp-rename');
-var syncy = require('syncy');
-let cleanCSS = require('gulp-clean-css');
+const paths = {
+    scss: {
+        src_popup: [
+            "./assets/scss/popup.scss"
+        ],
+        src_options: [
+            "./assets/scss/options.scss"
+        ],
+        watch: "./assets/scss/**/*.scss",
+        dest: "./app/"
+    },
+    js: {
+        src_popup: [
+            "./node_modules/jquery/dist/jquery.min.js",
+            ".node_modules/qrcode-generator/qrcode.js",
+            "./node_modules/otplib/otplib-browser.js",
+            "./node_modules/jquery-circle-progress/dist/circle-progress.min.js",
+            "./node_modules/popper.js/dist/umd/popper.min.js",
+            "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+            "./assets/js/popup.js"
+        ],
+        src_options: [
+            "./node_modules/jquery/dist/jquery.min.js",
+            ".node_modules/qrcode-generator/qrcode.js",
+            "./node_modules/otplib/otplib-browser.js",
+            "./node_modules/jquery-circle-progress/dist/circle-progress.min.js",
+            "./node_modules/popper.js/dist/umd/popper.min.js",
+            "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+            "./assets/js/options.js"
+        ],
+        dest: "./app/"
+    }
+};
 
-// mise à jour des fichiers spécifiques provenant de node_modules
-gulp.task('sync-jquery', (done) => {
-    syncy(['node_modules/jquery/dist/*jquery.min.js'], 'js/', {
-        verbose: true,
-        updateAndDelete: false,
-        base: 'node_modules/jquery/dist/'
-    })
-    .then(() => {
-        done();
-    })
-    .catch((err) => {
-        done(err);
-    });
-});
+// gulp.task('sync-fa', (done) => {
+//     syncy(['node_modules/font-awesome/fonts/**'], 'fonts/', {
+//         verbose: true,
+//         base: 'node_modules/font-awesome/fonts/'
+//     })
+//     .then(() => {
+//         done();
+//     })
+//     .catch((err) => {
+//         done(err);
+//     });
+// });
 
-gulp.task('sync-qrcode-generator', (done) => {
-    syncy(['node_modules/qrcode-generator/*qrcode.js'], 'js/', {
-        verbose: true,
-        updateAndDelete: false,
-        base: 'node_modules/qrcode-generator/'
-    })
-    .then(() => {
-        done();
-    })
-    .catch((err) => {
-        done(err);
-    });
-});
+function style_popup() {
+    return (
+        gulp
+            .src(paths.scss.src_popup)
+            .pipe(sass())
+            .on("error", sass.logError)
+            .pipe(concat('popup-min.css'))
+            .pipe(cleanCSS())
+            .pipe(gulp.dest(paths.scss.dest))
+    );
+}
 
-gulp.task('sync-otplib', (done) => {
-    syncy(['node_modules/otplib/*otplib-browser.js'], 'js/', {
-        verbose: true,
-        updateAndDelete: false,
-        base: 'node_modules/otplib/'
-    })
-    .then(() => {
-        done();
-    })
-    .catch((err) => {
-        done(err);
-    });
-});
+function style_options() {
+    return (
+        gulp
+            .src(paths.scss.src_options)
+            .pipe(sass())
+            .on("error", sass.logError)
+            .pipe(concat('options-min.css'))
+            .pipe(cleanCSS())
+            .pipe(gulp.dest(paths.scss.dest))
+    );
+}
 
-gulp.task('sync-jquery-circle-progress', (done) => {
-    syncy(['node_modules/jquery-circle-progress/dist/*circle-progress.min.js'], 'js/', {
-        verbose: true,
-        updateAndDelete: false,
-        base: 'node_modules/jquery-circle-progress/dist/'
-    })
-    .then(() => {
-        done();
-    })
-    .catch((err) => {
-        done(err);
-    });
-});
+function bundle_popup() {
+    return (
+        gulp
+            .src(paths.js.src_popup)
+            .pipe(gulp.dest(paths.js.dest))
+    )
+}
 
-gulp.task('sync-popper', (done) => {
-    syncy(['node_modules/popper.js/dist/umd/*popper.min.js'], 'js/', {
-        verbose: true,
-        updateAndDelete: false,
-        base: 'node_modules/popper.js/dist/umd/'
-    })
-    .then(() => {
-        done();
-    })
-    .catch((err) => {
-        done(err);
-    });
-});
+function bundle_options() {
+    return (
+        gulp
+            .src(paths.js.src_options)
+            .pipe(gulp.dest(paths.js.dest))
+    )
+}
 
-gulp.task('sync-bootstrap', (done) => {
-    syncy(['node_modules/bootstrap/dist/js/*bootstrap.min.js'], 'js/', {
-        verbose: true,
-        updateAndDelete: false,
-        base: 'node_modules/bootstrap/dist/js/'
-    })
-    .then(() => {
-        done();
-    })
-    .catch((err) => {
-        done(err);
-    });
-});
+function watch() {
+    style_popup();
+    style_options();
+    bundle_popup();
+    bundle_options();
+    gulp.watch(paths.scss.watch, style_popup);
+    gulp.watch(paths.scss.watch, style_options);
+}
 
-gulp.task('sync-fa', (done) => {
-    syncy(['node_modules/font-awesome/fonts/**'], 'fonts/', {
-        verbose: true,
-        base: 'node_modules/font-awesome/fonts/'
-    })
-    .then(() => {
-        done();
-    })
-    .catch((err) => {
-        done(err);
-    });
-});
-
-// popup : sass -> css -> min
-gulp.task('sass-popup', function () {
-    return gulp.src('./scss/popup.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(rename('popup.css'))
-        .pipe(gulp.dest('./app'))
-        .on('end', function () {
-            return gulp.src('./app/popup.css')
-                .pipe(cleanCSS())
-                .pipe(rename('popup-min.css'))
-                .pipe(gulp.dest('./app'));
-        });
-});
-
-// options : sass -> css -> min
-gulp.task('sass-options', function () {
-    return gulp.src('./scss/options.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(rename('options.css'))
-        .pipe(gulp.dest('./app'))
-        .on('end', function () {
-            return gulp.src('./app/options.css')
-                .pipe(cleanCSS())
-                .pipe(rename('options-min.css'))
-                .pipe(gulp.dest('./app'));
-        });
-});
-
-// watch
-gulp.task('watch', function () {
-    gulp.watch('scss/**/*.scss', ['sass-popup']);
-    gulp.watch('scss/**/*.scss', ['sass-options']);
-});
-
-gulp.task('default', ['sync-jquery', 'sync-qrcode-generator', 'sync-otplib', 'sync-jquery-circle-progress', 'sync-popper', 'sync-bootstrap', 'sync-fa', 'sass-popup', 'sass-options', 'watch']);
+exports.watch = watch;

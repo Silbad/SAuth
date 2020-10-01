@@ -1,13 +1,16 @@
 {
     "name": "sauth",
     "displayName": "SAuth",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "description": "All token secrets for two-factor authentication",
     "repository": "https://github.com/Silbad/SAuth",
     "author": "Silbad",
     "license": "MPL-2.0",
     "scripts": {
-        "start": "web-ext run --no-reload"
+        "dev": "start web-ext run --no-reload && gulp watch",
+        "build": "web-ext build",
+        "sign": "web-ext sign",
+        "lint": "web-ext lint"
     },
     "dependencies": {
         "bootstrap": "^4.5.2",
@@ -16,14 +19,13 @@
         "jquery-circle-progress": "^1.2.2",
         "otplib": "^12.0.1",
         "popper.js": "^1.16.1",
-        "qrcode-generator": "^1.4.4",
-        "syncy": "^3.0.0",
-        "web-ext": "^5.1.0"
+        "qrcode-generator": "^1.4.4"
     },
     "devDependencies": {
         "gulp": "^4.0.2",
         "gulp-clean-css": "^4.3.0",
-        "gulp-rename": "^2.0.0",
-        "gulp-sass": "^4.1.0"
+        "gulp-concat": "^2.6.1",
+        "gulp-sass": "^4.1.0",
+        "web-ext": "^5.1.0"
     }
 }
