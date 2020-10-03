@@ -7,8 +7,8 @@
     "author": "Silbad",
     "license": "MPL-2.0",
     "scripts": {
-        "dev": "start web-ext run --no-reload && gulp watch",
-        "build": "web-ext build",
+        "dev": "start web-ext run --browser-console --verbose && gulp watch",
+        "build": "web-ext build --artifacts-dir _build --ignore-files _build .git donation node_modules screenshots scss .gitignore build.bat sauth.bat gulpfile.js LICENSE package.json README.md yarn.lock",
         "sign": "web-ext sign",
         "lint": "web-ext lint"
     },

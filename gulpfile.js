@@ -17,8 +17,8 @@ const paths = {
     js: {
         src_popup: [
             "./node_modules/jquery/dist/jquery.min.js",
-            ".node_modules/qrcode-generator/qrcode.js",
-            "./node_modules/otplib/otplib-browser.js",
+            "./node_modules/qrcode-generator/qrcode.js",
+            "./node_modules/otplib/index.js",
             "./node_modules/jquery-circle-progress/dist/circle-progress.min.js",
             "./node_modules/popper.js/dist/umd/popper.min.js",
             "./node_modules/bootstrap/dist/js/bootstrap.min.js",
@@ -26,13 +26,14 @@ const paths = {
         ],
         src_options: [
             "./node_modules/jquery/dist/jquery.min.js",
-            ".node_modules/qrcode-generator/qrcode.js",
-            "./node_modules/otplib/otplib-browser.js",
+            "./node_modules/qrcode-generator/qrcode.js",
+            "./node_modules/otplib/index.js",
             "./node_modules/jquery-circle-progress/dist/circle-progress.min.js",
             "./node_modules/popper.js/dist/umd/popper.min.js",
             "./node_modules/bootstrap/dist/js/bootstrap.min.js",
             "./assets/js/options.js"
         ],
+        watch: "./assets/js/**/*.js",
         dest: "./app/"
     }
 };
@@ -78,6 +79,7 @@ function bundle_popup() {
     return (
         gulp
             .src(paths.js.src_popup)
+            .pipe(concat('popup.js'))
             .pipe(gulp.dest(paths.js.dest))
     )
 }
@@ -86,6 +88,7 @@ function bundle_options() {
     return (
         gulp
             .src(paths.js.src_options)
+            .pipe(concat('options.js'))
             .pipe(gulp.dest(paths.js.dest))
     )
 }
