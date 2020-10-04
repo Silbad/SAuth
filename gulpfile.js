@@ -40,19 +40,6 @@ const paths = {
     }
 };
 
-// gulp.task('sync-fa', (done) => {
-//     syncy(['node_modules/font-awesome/fonts/**'], 'fonts/', {
-//         verbose: true,
-//         base: 'node_modules/font-awesome/fonts/'
-//     })
-//     .then(() => {
-//         done();
-//     })
-//     .catch((err) => {
-//         done(err);
-//     });
-// });
-
 function style_popup() {
     return (
         gulp

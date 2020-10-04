@@ -1,10 +1,27 @@
 body {
     font-size: 16px;
     background: transparent;
+
+    .form-control,
+    .input-group-append {
+        width: 300px;
+    }
+
+    h2 {
+        border-top: 1px solid $gray-300;
+        padding: ($grid-gutter-width / 2) 0; 
+        margin-top: $grid-gutter-width / 2;
+        &:first-child {
+            border: 0 none;
+        }
+    }
 }
 
 .table {
-    margin-top: 15px;
+    margin-top: $grid-gutter-width / 2;
+    thead th {
+        font-weight: normal;
+    }
     tr td:last-child {
         width: 70px;
         a {

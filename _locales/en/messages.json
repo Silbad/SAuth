@@ -111,9 +111,13 @@
         "message": "Seconds",
         "description": "Label seconds"
     },
-    "SAuthLabelBackup": {
-        "message": "Backup",
-        "description": "Label backup"
+    "SAuthLabelExport": {
+        "message": "Export",
+        "description": "Label export"
+    },
+    "SAuthLabelImport": {
+        "message": "Import",
+        "description": "Label import"
     },
     "SAuthButtonExport": {
         "message": "Export",

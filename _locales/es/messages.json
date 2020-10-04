@@ -111,9 +111,13 @@
         "message": "segundos",
         "description": "Etiqueta segundos"
     },
-    "SAuthLabelBackup": {
-        "message": "Copia de seguridad",
-        "description": "Etiqueta copia de seguridad"
+    "SAuthLabelExport": {
+        "message": "Exportación",
+        "description": "Etiqueta exportación"
+    },
+    "SAuthLabelImport": {
+        "message": "Importación",
+        "description": "Etiqueta importación"
     },
     "SAuthButtonExport": {
         "message": "Exportadora",
