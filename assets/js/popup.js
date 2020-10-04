@@ -1,7 +1,5 @@
-$(function() {
-
     // update json if necessary
-    function updateJSON() {
+    function updateJSON() {        
         browser.storage.local.get('listSecrets').then(function(item) {
             var data = item.listSecrets;
             if (data != undefined) {
@@ -82,6 +80,7 @@ $(function() {
         });
     }
 
+$(function() {
     // update json (for new version)
     updateJSON();
 

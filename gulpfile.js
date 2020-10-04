@@ -18,7 +18,8 @@ const paths = {
         src_popup: [
             "./node_modules/jquery/dist/jquery.min.js",
             "./node_modules/qrcode-generator/qrcode.js",
-            "./node_modules/otplib/index.js",
+            "./node_modules/@otplib/preset-browser/buffer.js",
+            "./node_modules/@otplib/preset-browser/index.js",
             "./node_modules/jquery-circle-progress/dist/circle-progress.min.js",
             "./node_modules/popper.js/dist/umd/popper.min.js",
             "./node_modules/bootstrap/dist/js/bootstrap.min.js",
@@ -27,7 +28,8 @@ const paths = {
         src_options: [
             "./node_modules/jquery/dist/jquery.min.js",
             "./node_modules/qrcode-generator/qrcode.js",
-            "./node_modules/otplib/index.js",
+            "./node_modules/@otplib/preset-browser/buffer.js",
+            "./node_modules/@otplib/preset-browser/index.js",
             "./node_modules/jquery-circle-progress/dist/circle-progress.min.js",
             "./node_modules/popper.js/dist/umd/popper.min.js",
             "./node_modules/bootstrap/dist/js/bootstrap.min.js",
@@ -98,8 +100,8 @@ function watch() {
     style_options();
     bundle_popup();
     bundle_options();
-    gulp.watch(paths.scss.watch, style_popup);
-    gulp.watch(paths.scss.watch, style_options);
+    gulp.watch(paths.scss.watch, gulp.parallel(style_popup, style_options));
+    gulp.watch(paths.js.watch, gulp.parallel(bundle_popup, bundle_options));
 }
 
 exports.watch = watch;

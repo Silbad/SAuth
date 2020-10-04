@@ -7,17 +7,18 @@
     "author": "Silbad",
     "license": "MPL-2.0",
     "scripts": {
-        "dev": "start web-ext run --browser-console --verbose && gulp watch",
+        "dev": "start web-ext run --no-config-discovery --browser-console && gulp watch",
+        "debug": "start web-ext run --no-config-discovery --browser-console --verbose && gulp watch",
         "build": "web-ext build --artifacts-dir _build --ignore-files _build .git donation node_modules screenshots scss .gitignore build.bat sauth.bat gulpfile.js LICENSE package.json README.md yarn.lock",
         "sign": "web-ext sign",
         "lint": "web-ext lint"
     },
     "dependencies": {
+        "@otplib/preset-browser": "^12.0.1",
         "bootstrap": "^4.5.2",
         "font-awesome": "^4.7.0",
         "jquery": "^3.5.1",
         "jquery-circle-progress": "^1.2.2",
-        "otplib": "^12.0.1",
         "popper.js": "^1.16.1",
         "qrcode-generator": "^1.4.4"
     },
