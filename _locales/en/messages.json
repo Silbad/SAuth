@@ -1,142 +1,107 @@
 {
     "SAuthName": {
-        "message": "SAuth",
-        "description": "Name of the extension"
+        "message": "SAuth"
     },
     "SAuthDescription": {
-        "message": "All token secrets for two-factor authentication",
-        "description": "Description of the extension"
+        "message": "All token secrets for two-factor authentication"
     },
     "SAuthLabelSecurity": {
-        "message": "Security",
-        "description": "Label Security"
+        "message": "Security"
     },
     "SAuthLabelPIN": {
-        "message": "Code PIN",
-        "description": "Label code PIN"
+        "message": "Code PIN"
     },
     "SAuthButtonSave": {
-        "message": "Save",
-        "description": "Label save button"
+        "message": "Save"
     },
     "SAuthLabelListSecrets": {
-        "message": "Secrets list",
-        "description": "Label secrets list"
+        "message": "Secrets list"
     },
     "SAuthLabelPINOld": {
-        "message": "Old PIN",
-        "description": "Label old PIN"
+        "message": "Old PIN"
     },
     "SAuthLabelPINNew": {
-        "message": "New PIN",
-        "description": "Label new PIN"
+        "message": "New PIN"
     },
     "SAuthLabelSecretIssuer": {
-        "message": "Provider",
-        "description": "Label provider"
+        "message": "Provider"
     },
     "SAuthLabelSecretAccount": {
-        "message": "Account",
-        "description": "Label secret account"
+        "message": "Account"
     },
     "SAuthLabelSecretCode": {
-        "message": "Code",
-        "description": "Label secret code"
+        "message": "Code"
     },
     "SAuthLabelSession": {
-        "message": "Session",
-        "description": "Label session"
+        "message": "Session"
     },
     "SAuthLabelDuration": {
-        "message": "Session duration",
-        "description": "Label session duration"
+        "message": "Session duration"
     },
     "SAuthLabelData": {
-        "message": "Data",
-        "description": "Label data"
+        "message": "Data"
     },
     "SAuthClipboard": {
-        "message": "code copied to clipboard",
-        "description": "Text clipboard"
+        "message": "code copied to clipboard"
     },
     "SAuthButtonAdd": {
-        "message": "Add",
-        "description": "Label save button"
+        "message": "Add"
     },
     "SAuthButtonDelete": {
-        "message": "Delete",
-        "description": "Label delete button"
+        "message": "Delete"
     },
     "SAuthButtonUpdate": {
-        "message": "Update",
-        "description": "Label update button"
+        "message": "Update"
     },
     "SAuthButtonCancel": {
-        "message": "Cancel",
-        "description": "Label cancel button"
+        "message": "Cancel"
     },
     "SAuthButtonReset": {
-        "message": "Reset your data DEFINITIVELY",
-        "description": "Label reset button"
+        "message": "Reset your data DEFINITIVELY"
     },
     "SAuthConfirmDelete": {
-        "message": "Are you sure you want to suppress this secret?",
-        "description": "Text of the confirmation for delete the secret"
+        "message": "Are you sure you want to suppress this secret?"
     },
     "SAuthAlertForm": {
-        "message": "Error: some fields are not valid!",
-        "description": "Text of the error returned if form invalid"
+        "message": "Error: some fields are not valid!"
     },
     "SAuthConfigurationText": {
-        "message": "SAuth's almost ready.<br />A PIN code and at least one secret must be configured in the options.",
-        "description": "Text if unconfigured options"
+        "message": "SAuth's almost ready.<br />A PIN code and at least one secret must be configured in the options."
     },
     "SAuthAlertFormPinSuccess": {
-        "message": "Successful PIN code update.",
-        "description": "Confirmation text updated PIN code update"
+        "message": "Successful PIN code update."
     },
     "SAuthAlertFormDurationSuccess": {
-        "message": "Successful session duration update.",
-        "description": "Confirmation text updated session duration update"
+        "message": "Successful session duration update."
     },
     "SAuthConfirmReset": {
-        "message": "Are you sure you want to reset DEFINITIVELY all your data?",
-        "description": "Data reset confirmation confirmation text"
+        "message": "Are you sure you want to reset DEFINITIVELY all your data?"
     },
     "SAuthCopy": {
-        "message": "copy",
-        "description": "Label copy"
+        "message": "copy"
     },
     "SAuthSeconds": {
-        "message": "Seconds",
-        "description": "Label seconds"
+        "message": "Seconds"
     },
     "SAuthLabelExport": {
-        "message": "Export",
-        "description": "Label export"
+        "message": "Export"
     },
     "SAuthLabelImport": {
-        "message": "Import",
-        "description": "Label import"
+        "message": "Import"
     },
     "SAuthButtonExport": {
-        "message": "Export",
-        "description": "Label export"
+        "message": "Export"
     },
     "SAuthNoSecret": {
-        "message": "No secret...",
-        "description": "Label no secret"
+        "message": "No secret..."
     },
     "SAuthButtonImport": {
-        "message": "Import",
-        "description": "Label import"
+        "message": "Import"
     },
     "SAuthLabelBrowse": {
-        "message": "Browse...",
-        "description": "Label browse"
+        "message": "Browse..."
     },
     "SAuthConfirmImport": {
-        "message": "Are you sure you want to import these secrets?\nThe current list will be replaced by this one.",
-        "description": "Confirmation text the import of secrets"
+        "message": "Are you sure you want to import these secrets?\nThe current list will be replaced by this one."
     }
 }

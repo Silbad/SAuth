@@ -1,142 +1,107 @@
 {
     "SAuthName": {
-        "message": "SAuth",
-        "description": "Nom de l'extension"
+        "message": "SAuth"
     },
     "SAuthDescription": {
-        "message": "Tous les codes secrets pour l'authentification à deux facteurs",
-        "description": "Description de l'extension"
+        "message": "Tous les codes secrets pour l'authentification à deux facteurs"
     },
     "SAuthLabelSecurity": {
-        "message": "Sécurité",
-        "description": "Libellé sécurité"
+        "message": "Sécurité"
     },
     "SAuthLabelPIN": {
-        "message": "Code PIN",
-        "description": "Libellé code PIN"
+        "message": "Code PIN"
     },
     "SAuthButtonSave": {
-        "message": "Enregistrer",
-        "description": "Libellé bouton enregistrer"
+        "message": "Enregistrer"
     },
     "SAuthLabelListSecrets": {
-        "message": "Liste des secrets",
-        "description": "Libellé liste des secrets"
+        "message": "Liste des secrets"
     },
     "SAuthLabelPINOld": {
-        "message": "Ancien PIN",
-        "description": "Libellé ancien PIN"
+        "message": "Ancien PIN"
     },
     "SAuthLabelPINNew": {
-        "message": "Nouveau PIN",
-        "description": "Libellé nouveau PIN"
+        "message": "Nouveau PIN"
     },
     "SAuthLabelSecretIssuer": {
-        "message": "Prestataire",
-        "description": "Libellé du texte du prestataire"
+        "message": "Prestataire"
     },
     "SAuthLabelSecretAccount": {
-        "message": "Compte",
-        "description": "Libellé du texte du compte"
+        "message": "Compte"
     },
     "SAuthLabelSecretCode": {
-        "message": "Secret",
-        "description": "Libellé du secret"
+        "message": "Secret"
     },
     "SAuthLabelSession": {
-        "message": "Session",
-        "description": "Libellé session"
+        "message": "Session"
     },
     "SAuthLabelDuration": {
-        "message": "Durée de session",
-        "description": "Libellé durée de session"
+        "message": "Durée de session"
     },
     "SAuthLabelData": {
-        "message": "Données",
-        "description": "Libellé données"
+        "message": "Données"
     },
     "SAuthClipboard": {
-        "message": "code copié dans le bloc-notes",
-        "description": "Texte bloc-notes"
+        "message": "code copié dans le bloc-notes"
     },
     "SAuthButtonAdd": {
-        "message": "Ajouter",
-        "description": "Libellé bouton ajouter"
+        "message": "Ajouter"
     },
     "SAuthButtonDelete": {
-        "message": "Supprimer",
-        "description": "Libellé bouton supprimer"
+        "message": "Supprimer"
     },
     "SAuthButtonUpdate": {
-        "message": "Modifier",
-        "description": "Libellé bouton modifier"
+        "message": "Modifier"
     },
     "SAuthButtonCancel": {
-        "message": "Annuler",
-        "description": "Libellé bouton annuler"
+        "message": "Annuler"
     },
     "SAuthButtonReset": {
-        "message": "Ré-initialiser DEFINITIVEMENT vos données",
-        "description": "Libellé bouton ré-initialiser"
+        "message": "Ré-initialiser DEFINITIVEMENT vos données"
     },
     "SAuthConfirmDelete": {
-        "message": "Etes-vous sûr de vouloir supprimer ce secret ?",
-        "description": "Texte de la confirmation suppression du secret"
+        "message": "Etes-vous sûr de vouloir supprimer ce secret ?"
     },
     "SAuthAlertForm": {
-        "message": "Erreur : certains champs ne sont pas valident !",
-        "description": "Texte de l'erreur renvoyé si formulaire non valide"
+        "message": "Erreur : certains champs ne sont pas valident !"
     },
     "SAuthConfigurationText": {
-        "message": "SAuth est presque prêt.<br />Un code PIN et au moins un secret doivent être configurés dans les options.",
-        "description": "Texte si options non configurées"
+        "message": "SAuth est presque prêt.<br />Un code PIN et au moins un secret doivent être configurés dans les options."
     },
     "SAuthAlertFormPinSuccess": {
-        "message": "Mise à jour du code PIN réussie.",
-        "description": "Texte confirmation mise à jour code PIN"
+        "message": "Mise à jour du code PIN réussie."
     },
     "SAuthAlertFormDurationSuccess": {
-        "message": "Mise à jour de la durée de session réussie.",
-        "description": "Texte confirmation mise à jour de la durée de session"
+        "message": "Mise à jour de la durée de session réussie."
     },
     "SAuthConfirmReset": {
-        "message": "Etes-vous sûr de vouloir ré-initialiser DEFINITIVEMENT toutes vos données ?",
-        "description": "Texte de la confirmation de ré-initialisation des données"
+        "message": "Etes-vous sûr de vouloir ré-initialiser DEFINITIVEMENT toutes vos données ?"
     },
     "SAuthCopy": {
-        "message": "copie",
-        "description": "Libellé copie"
+        "message": "copie"
     },
     "SAuthSeconds": {
-        "message": "secondes",
-        "description": "Libellé secondes"
+        "message": "secondes"
     },
     "SAuthLabelExport": {
-        "message": "Exporter",
-        "description": "Libellé exporter"
+        "message": "Exporter"
     },
     "SAuthLabelImport": {
-        "message": "Importer",
-        "description": "Libellé importer"
+        "message": "Importer"
     },
     "SAuthButtonExport": {
-        "message": "Exporter",
-        "description": "Libellé bouton exporter"
+        "message": "Exporter"
     },
     "SAuthNoSecret": {
-        "message": "Aucun secret...",
-        "description": "Libellé aucun secret"
+        "message": "Aucun secret..."
     },
     "SAuthButtonImport": {
-        "message": "Importer",
-        "description": "Libellé bouton importer"
+        "message": "Importer"
     },
     "SAuthLabelBrowse": {
-        "message": "Parcourir...",
-        "description": "Libellé parcourir"
+        "message": "Parcourir..."
     },
     "SAuthConfirmImport": {
-        "message": "Etes-vous sûr de vouloir importer ces secrets ?\nLa liste actuelle va être remplacée par celle-ci.",
-        "description": "Texte de la confirmation l'import des secrets"
+        "message": "Etes-vous sûr de vouloir importer ces secrets ?\nLa liste actuelle va être remplacée par celle-ci."
     }
 }

@@ -5,23 +5,29 @@
 	"description": "__MSG_SAuthDescription__",
 	"homepage_url": "https://github.com/Silbad/SAuth",
 	"default_locale": "en",
+	"omnibox": {
+		"keyword": "sauth"
+	},
 	"icons": {
 		"48": "icons/logo-48.png",
 		"96": "icons/logo@2x.png"
 	},
-	"permissions": ["storage", "clipboardWrite"],
+	"permissions": [
+		"storage",
+		"clipboardWrite"
+	],
 	"developer": {
 		"name": "Silbad",
 		"url": "https://github.com/Silbad/SAuth"
 	},
 	"options_ui": {
-		"browser_style": true,
-		"page": "app/options.htm"
+		"page": "app/options.html",
+		"open_in_tab": true
 	},
 	"browser_action": {
 		"browser_style": true,
 		"default_icon": "icons/logo@2x.png",
 		"default_title": "SAuth",
-		"default_popup": "app/popup.htm"
+		"default_popup": "app/popup.html"
 	}
 }

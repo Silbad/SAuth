@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>SAuth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="./options-min.css" />
+    <script src="./options.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>SAuth</h1>
+
+        <h2 id="security"></h2>
+
+        <form id="form-options-pin-create" class="p-2">
+
+            <div class="form-group">
+                <label id="label-pin" class="mr-2" for="sauth-pin"></label>
+                <input id="sauth-pin" type="password" class="form-control" maxlength="4" />
+            </div>
+
+            <button type="submit" class="btn btn-primary save"></button>
+
+        </form>
+
+        <form id="form-options-pin-update" class="p-2">
+
+            <div class="form-group">
+                <label id="label-pin-old" class="mr-2" for="sauth-pin-old"></label>
+                <input id="sauth-pin-old" type="password" class="form-control" maxlength="4" />
+            </div>
+
+            <div class="form-group">
+                <label id="label-pin-new" class="mr-2" for="sauth-pin-new"></label>
+                <input id="sauth-pin-new" type="password" class="form-control" maxlength="4" />
+            </div>
+
+            <button type="submit" class="btn btn-primary save"></button>
+
+        </form>
+
+        <div id="main-forms">
+            <h2 id="secrets"></h2>
+
+            <form id="form-options-secrets-create" class="p-2">
+
+                <div class="form-group mr-2">
+                    <label id="label-secret-issuer" for="sauth-secret-issuer"></label>
+                    <input id="sauth-secret-issuer" type="text" class="form-control" value />
+                </div>
+
+                <div class="form-group mr-2">
+                    <label id="label-secret-account" for="sauth-secret-account"></label>
+                    <input id="sauth-secret-account" type="text" class="form-control" value />
+                </div>
+
+                <div class="form-group mr-2">
+                    <label id="label-secret-code" for="sauth-secret-code"></label>
+                    <input id="sauth-secret-code" type="text" class="form-control" value />
+                </div>
+
+                <button id="add" type="submit" class="btn btn-primary"></button>
+
+            </form>
+
+            <form id="form-options-secrets-update" class="p-2">
+                <div class="form-group mr-2">
+                    <label id="label-secret-issuer-update" for="sauth-secret-issuer-update"></label><input
+                        id="sauth-secret-issuer-update" type="text" class="form-control" value="" />
+                </div>
+                <div class="form-group mr-2">
+                    <label id="label-secret-account-update" for="sauth-secret-account-update"></label><input
+                        id="sauth-secret-account-update" type="text" class="form-control" value="" />
+                </div>
+                <input id="sauth-secret-id-update" type="hidden" class="form-control" value="" />
+                <button id="cancel" type="button" class="btn btn-secondary mr-2"></button> <button id="update"
+                    type="submit" class="btn btn-primary"></button>
+
+            </form>
+
+            <table id="list-secrets" class="table table-striped table-bordered table-hover table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th class="label-secret-issuer"></th>
+                        <th class="label-secret-account"></th>
+                        <th class="label-secret-code"></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <br />
+
+            <h2 id="session"></h2>
+
+            <form id="form-options-duration" class="p-2">
+                <div class="form-group">
+                    <label id="label-pin-session" class="mr-2" for="sauth-pin-session"></label>
+                    <input id="sauth-pin-session" type="password" class="form-control" maxlength="4" />
+                </div>
+                <div class="form-group">
+                    <label id="label-duration" for="sauth-duration"></label><span id="label-seconds"></span>
+                    <input id="sauth-duration" type="number" class="form-control mr-2" value="0" min="0" />
+                </div>
+                <button type="submit" class="btn btn-primary save"></button>
+            </form>
+
+            <br />
+
+            <h2 id="label-export"></h2>
+
+            <form id="form-options-export" class="p-2">
+                <div class="form-group">
+                    <label id="label-export-pin-session" for="sauth-export-pin-session"></label><input
+                        id="sauth-export-pin-session" type="password" class="form-control" maxlength="4" />
+                </div>
+                <button id="export" type="submit" class="btn btn-primary export"></button>
+                <a id="download" class="invisible" href="" download=""></a>
+            </form>
+
+            <h2 id="label-import"></h2>
+
+            <form id="form-options-import" class="p-2">
+                <div class="form-group">
+                    <label id="label-import-pin-session" for="sauth-import-pin-session"></label>
+                    <input id="sauth-import-pin-session" type="password" class="form-control" maxlength="4" />
+                </div>
+                <div class="form-group">
+                    <input id="import-backup" type="file" class="form-control" accept=".json" />
+                </div>
+                <button id="import" type="submit" class="btn btn-primary import"></button>
+            </form>
+
+            <br />
+
+            <h2 id="data"></h2>
+
+            <form id="form-options-data" class="p-2 pb-4">
+                <button id="reset" type="submit" class="btn btn-danger"></button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

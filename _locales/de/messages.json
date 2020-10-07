@@ -1,0 +1,107 @@
+{
+    "SAuthName": {
+        "message": "SAuth"
+    },
+    "SAuthDescription": {
+        "message": "Alle Geheimcodes für Zwei-Faktor-Authentifizierung"
+    },
+    "SAuthLabelSecurity": {
+        "message": "Sicherheit"
+    },
+    "SAuthLabelPIN": {
+        "message": "PIN-Code"
+    },
+    "SAuthButtonSave": {
+        "message": "Registrieren"
+    },
+    "SAuthLabelListSecrets": {
+        "message": "Liste der Geheimnisse"
+    },
+    "SAuthLabelPINOld": {
+        "message": "Alte PIN"
+    },
+    "SAuthLabelPINNew": {
+        "message": "Neue PIN"
+    },
+    "SAuthLabelSecretIssuer": {
+        "message": "Anbieter"
+    },
+    "SAuthLabelSecretAccount": {
+        "message": "Konto"
+    },
+    "SAuthLabelSecretCode": {
+        "message": "Geheimnis"
+    },
+    "SAuthLabelSession": {
+        "message": "Sitzung"
+    },
+    "SAuthLabelDuration": {
+        "message": "Dauer der Sitzung"
+    },
+    "SAuthLabelData": {
+        "message": "Daten"
+    },
+    "SAuthClipboard": {
+        "message": "code in die Zwischenablage kopiert"
+    },
+    "SAuthButtonAdd": {
+        "message": "Hinzufügen"
+    },
+    "SAuthButtonDelete": {
+        "message": "Löschen"
+    },
+    "SAuthButtonUpdate": {
+        "message": "Bearbeiten"
+    },
+    "SAuthButtonCancel": {
+        "message": "Abbrechen"
+    },
+    "SAuthButtonReset": {
+        "message": "Setzen Sie Ihre Daten DEFINITIV zurück"
+    },
+    "SAuthConfirmDelete": {
+        "message": "Sind Sie sicher, dass Sie dieses Geheimnis beseitigen wollen?"
+    },
+    "SAuthAlertForm": {
+        "message": "Fehler: einige Felder sind nicht gültig!"
+    },
+    "SAuthConfigurationText": {
+        "message": "SAuth ist fast fertig.<br /> Ein PIN-Code und mindestens ein Geheimnis müssen in den Optionen konfiguriert werden."
+    },
+    "SAuthAlertFormPinSuccess": {
+        "message": "PIN-Aktualisierung erfolgreich."
+    },
+    "SAuthAlertFormDurationSuccess": {
+        "message": "Aktualisieren der Dauer einer erfolgreichen Sitzung."
+    },
+    "SAuthConfirmReset": {
+        "message": "Sind Sie sicher, dass Sie DEFINITLICH alle Ihre Daten zurücksetzen wollen?"
+    },
+    "SAuthCopy": {
+        "message": "kopie"
+    },
+    "SAuthSeconds": {
+        "message": "sekunden"
+    },
+    "SAuthLabelExport": {
+        "message": "Exportieren"
+    },
+    "SAuthLabelImport": {
+        "message": "Importer"
+    },
+    "SAuthButtonExport": {
+        "message": "Importieren"
+    },
+    "SAuthNoSecret": {
+        "message": "Aucun secret..."
+    },
+    "SAuthButtonImport": {
+        "message": "Importieren"
+    },
+    "SAuthLabelBrowse": {
+        "message": "Stöbern Sie..."
+    },
+    "SAuthConfirmImport": {
+        "message": "Sind Sie sicher, dass Sie diese Geheimnisse importieren wollen?\nDie aktuelle Liste wird durch diese Liste ersetzt."
+    }
+}

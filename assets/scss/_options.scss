@@ -1,19 +1,24 @@
+html {
+    height: 100%;
+}
+
 body {
     font-size: 16px;
-    background: transparent;
+    background: $gray-200;
+    height: 100%;
+    .container {
+        background: $white;
+        min-height: 100%;
+    }
 
-    .form-control,
-    .input-group-append {
-        width: 300px;
+    .form-control {
+        width: 400px;
     }
 
     h2 {
         border-top: 1px solid $gray-300;
-        padding: ($grid-gutter-width / 2) 0; 
         margin-top: $grid-gutter-width / 2;
-        &:first-child {
-            border: 0 none;
-        }
+        padding-top: $grid-gutter-width / 2;
     }
 }
 
@@ -33,12 +38,4 @@ body {
 
 #form-options-secrets input {
     width: 300px;
-}
-
-.custom-file-label {
-    justify-content: left !important;
-}
-
-.custom-file-label::after {
-    display: none;
 }

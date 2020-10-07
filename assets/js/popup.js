@@ -106,7 +106,7 @@ $(function () {
         if ((item.pin != undefined) && (item.pin != '') && (item.listSecrets != undefined) && (item.listSecrets != '')) {
 
             // test session
-            if ((item.sessionDate != undefined) && (item.sessionDate != undefined)) {
+            if (item.sessionDate != undefined) {
                 // update session date
                 var now = new Date();
                 var tmpTime = item.sessionDate;

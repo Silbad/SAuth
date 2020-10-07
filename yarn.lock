@@ -665,7 +665,16 @@ boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bootstrap@^4.5.2:
+bootbox@^5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/bootbox/-/bootbox-5.4.1.tgz#5f5facc543ee459c0436738470b3ddfbb3347a41"
+  integrity sha512-8I2zqVjsrUdRj5aADESQNOlqssbbazl7jkTcue/HqMo+AP+tHzdEHILS6cQsyvzLriZtQg+fG45Drd8M/Q4a8A==
+  dependencies:
+    bootstrap "^4.4.0"
+    jquery "^3.5.1"
+    popper.js "^1.16.0"
+
+bootstrap@^4.4.0, bootstrap@^4.5.2:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.5.2.tgz#a85c4eda59155f0d71186b6e6ad9b875813779ab"
   integrity sha512-vlGn0bcySYl/iV+BGA544JkkZP5LB3jsmkeKLFQakCOwCM3AOk7VkldBz4jrzSe+Z0Ezn99NVXa1o45cQY4R6A==
@@ -4240,7 +4249,7 @@ plugin-error@1.0.1, plugin-error@^1.0.1:
     arr-union "^3.1.0"
     extend-shallow "^3.0.2"
 
-popper.js@^1.16.1:
+popper.js@^1.16.0, popper.js@^1.16.1:
   version "1.16.1"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
   integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==

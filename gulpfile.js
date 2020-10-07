@@ -27,12 +27,10 @@ const paths = {
         ],
         src_options: [
             "./node_modules/jquery/dist/jquery.min.js",
-            "./node_modules/qrcode-generator/qrcode.js",
-            "./node_modules/@otplib/preset-browser/buffer.js",
-            "./node_modules/@otplib/preset-browser/index.js",
-            "./node_modules/jquery-circle-progress/dist/circle-progress.min.js",
             "./node_modules/popper.js/dist/umd/popper.min.js",
             "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+            "./node_modules/bootbox/dist/bootbox.min.js",
+            "./node_modules/bootbox/dist/bootbox.locales.min.js",
             "./assets/js/options.js"
         ],
         watch: "./assets/js/**/*.js",
