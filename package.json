@@ -28,6 +28,9 @@
         "gulp-clean-css": "^4.3.0",
         "gulp-concat": "^2.6.1",
         "gulp-sass": "^4.1.0",
+        "kind-of": "^6.0.3",
+        "node-forge": "^0.10.0",
+        "set-value": "^3.0.2",
         "web-ext": "^5.1.0"
     }
 }
