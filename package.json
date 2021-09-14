@@ -30,7 +30,7 @@
         "gulp-sass": "^4.1.0",
         "kind-of": "^6.0.3",
         "node-forge": "^0.10.0",
-        "set-value": "^3.0.2",
+        "set-value": "^4.0.1",
         "web-ext": "^5.1.0"
     }
 }
